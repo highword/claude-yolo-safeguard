@@ -88,44 +88,44 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SHELL-01 | TBD | Pending |
-| SHELL-02 | TBD | Pending |
-| SHELL-03 | TBD | Pending |
-| SHELL-04 | TBD | Pending |
-| SHELL-05 | TBD | Pending |
-| SHELL-06 | TBD | Pending |
-| SHELL-07 | TBD | Pending |
-| SHELL-08 | TBD | Pending |
-| SHELL-09 | TBD | Pending |
-| RESP-01 | TBD | Pending |
-| RESP-02 | TBD | Pending |
-| RESP-03 | TBD | Pending |
-| RESP-04 | TBD | Pending |
-| RESP-05 | TBD | Pending |
-| RESP-06 | TBD | Pending |
-| RESP-07 | TBD | Pending |
-| CODE-01 | TBD | Pending |
-| CODE-02 | TBD | Pending |
-| CODE-03 | TBD | Pending |
-| CODE-04 | TBD | Pending |
-| CODE-05 | TBD | Pending |
-| CODE-06 | TBD | Pending |
-| INST-01 | TBD | Pending |
-| INST-02 | TBD | Pending |
-| INST-03 | TBD | Pending |
-| INST-04 | TBD | Pending |
-| INST-05 | TBD | Pending |
-| INST-06 | TBD | Pending |
-| PLAT-01 | TBD | Pending |
-| PLAT-02 | TBD | Pending |
-| PLAT-03 | TBD | Pending |
-| PLAT-04 | TBD | Pending |
+| SHELL-01 | Phase 2 | Pending |
+| SHELL-02 | Phase 2 | Pending |
+| SHELL-03 | Phase 2 | Pending |
+| SHELL-04 | Phase 2 | Pending |
+| SHELL-05 | Phase 2 | Pending |
+| SHELL-06 | Phase 2 | Pending |
+| SHELL-07 | Phase 2 | Pending |
+| SHELL-08 | Phase 2 | Pending |
+| SHELL-09 | Phase 2 | Pending |
+| RESP-01 | Phase 1 | Pending |
+| RESP-02 | Phase 3 | Pending |
+| RESP-03 | Phase 3 | Pending |
+| RESP-04 | Phase 3 | Pending |
+| RESP-05 | Phase 3 | Pending |
+| RESP-06 | Phase 3 | Pending |
+| RESP-07 | Phase 3 | Pending |
+| CODE-01 | Phase 5 | Pending |
+| CODE-02 | Phase 5 | Pending |
+| CODE-03 | Phase 5 | Pending |
+| CODE-04 | Phase 5 | Pending |
+| CODE-05 | Phase 5 | Pending |
+| CODE-06 | Phase 5 | Pending |
+| INST-01 | Phase 4 | Pending |
+| INST-02 | Phase 4 | Pending |
+| INST-03 | Phase 1 | Pending |
+| INST-04 | Phase 6 | Pending |
+| INST-05 | Phase 6 | Pending |
+| INST-06 | Phase 6 | Pending |
+| PLAT-01 | Phase 2 | Pending |
+| PLAT-02 | Phase 2 | Pending |
+| PLAT-03 | Phase 6 | Pending |
+| PLAT-04 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 32 total
-- Mapped to phases: 0
-- Unmapped: 32 ⚠️
+- Mapped to phases: 32
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-18*
-*Last updated: 2026-05-18 after initial definition*
+*Last updated: 2026-05-18 after roadmap creation*
