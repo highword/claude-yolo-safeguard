@@ -21,7 +21,12 @@
 **Goal:** Establish the project scaffold with all shared interfaces, configuration system, and rule definitions so subsequent phases can build on stable contracts.
 **Depends on:** --
 **Requirements:** RESP-01, INST-03
-**Plans:** TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold, build tooling, and all shared type interfaces
+- [ ] 01-02-PLAN.md — Configuration system with 3-layer merge and escalation enforcement
+- [ ] 01-03-PLAN.md — Built-in rule definitions and Quick Reject Set
 
 #### Success Criteria
 
@@ -121,7 +126,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation & Core Types | 0/? | Not started | -- |
+| 1. Foundation & Core Types | 0/3 | Planning complete | -- |
 | 2. Shell Command Analysis | 0/? | Not started | -- |
 | 3. Response & Decision Engine | 0/? | Not started | -- |
 | 4. Hook Integration & Installation | 0/? | Not started | -- |
