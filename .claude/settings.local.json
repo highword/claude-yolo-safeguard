@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(MSYS_NO_PATHCONV=1 npx *)",
+      "Bash(where gh *)",
+      "Bash(where.exe gh *)",
+      "Bash(gh.exe --version)",
+      "Bash(mkdir *)",
+      "Bash(tar -xzf openai-codex-0.130.0.tgz)",
+      "Bash(git clone *)",
+      "Skill(gsd-new-project)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" query init.new-project 2>&1)",
+      "PowerShell(node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" --help 2>&1)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\I560679\\\\iCloudDrive\\\\Claude Code\\\\2. Repository\\\\claude-safe-keeper\"; node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" init new-project 2>&1)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\I560679\\\\iCloudDrive\\\\Claude Code\\\\2. Repository\\\\claude-safe-keeper\"; node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" agent-skills gsd-project-researcher --raw 2>&1)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\I560679\\\\iCloudDrive\\\\Claude Code\\\\2. Repository\\\\claude-yolo-safeguard\"; node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" config-new-project '{\"mode\":\"yolo\",\"granularity\":\"standard\",\"parallelization\":true,\"commit_docs\":true,\"model_profile\":\"inherit\",\"workflow\":{\"research\":true,\"plan_check\":true,\"verifier\":true,\"nyquist_validation\":true}}' 2>&1)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\I560679\\\\iCloudDrive\\\\Claude Code\\\\2. Repository\\\\claude-yolo-safeguard\"; node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" config-new-project '{\\\\\"mode\\\\\":\\\\\"yolo\\\\\",\\\\\"granularity\\\\\":\\\\\"standard\\\\\",\\\\\"parallelization\\\\\":true,\\\\\"commit_docs\\\\\":true,\\\\\"model_profile\\\\\":\\\\\"inherit\\\\\",\\\\\"workflow\\\\\":{\\\\\"research\\\\\":true,\\\\\"plan_check\\\\\":true,\\\\\"verifier\\\\\":true,\\\\\"nyquist_validation\\\\\":true}}' 2>&1)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\I560679\\\\iCloudDrive\\\\Claude Code\\\\2. Repository\\\\claude-yolo-safeguard\"; node \"$env:USERPROFILE\\\\.claude\\\\get-shit-done\\\\bin\\\\gsd-tools.cjs\" generate-claude-md --output CLAUDE.md 2>&1)",
+      "mcp__github-com__search_repositories",
+      "mcp__github-com__search_code",
+      "mcp__github-com__get_file_contents",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)",
+      "Bash(bun --version)",
+      "Bash(where.exe bun *)",
+      "mcp__github-com__create_repository",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git branch *)"
+    ]
+  }
+}
