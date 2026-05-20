@@ -7,7 +7,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Foundation & Core Types** - Project scaffold, shared types, config system, built-in rule definitions
+- [x] **Phase 1: Foundation & Core Types** - Project scaffold, shared types, config system, built-in rule definitions (completed 2026-05-20)
 - [ ] **Phase 2: Shell Command Analysis** - POSIX parser, command segmentation, rule matching, false-positive reduction
 - [ ] **Phase 3: Response & Decision Engine** - Severity classification, graduated actions, audit logging, message formatting
 - [ ] **Phase 4: Hook Integration & Installation** - Claude Code adapter, entry point, CLI installer, zero-config setup
@@ -126,7 +126,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation & Core Types | 0/3 | Planning complete | -- |
+| 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
 | 2. Shell Command Analysis | 0/? | Not started | -- |
 | 3. Response & Decision Engine | 0/? | Not started | -- |
 | 4. Hook Integration & Installation | 0/? | Not started | -- |
