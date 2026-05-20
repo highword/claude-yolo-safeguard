@@ -65,7 +65,11 @@ Plans:
 **Goal:** Every detection produces the correct graduated response (block/warn/log) with clear explanations, safe alternatives, and an audit trail.
 **Depends on:** Phase 1
 **Requirements:** RESP-02, RESP-03, RESP-04, RESP-05, RESP-06, RESP-07
-**Plans:** TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Allow-list matching and decision engine core (TDD)
+- [ ] 03-02-PLAN.md — Message formatting, hook output, and audit logger (TDD)
 
 #### Success Criteria
 
@@ -133,7 +137,7 @@ Plans:
 |-------|---------------|--------|-----------|
 | 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
 | 2. Shell Command Analysis | 3/3 | Complete | 2026-05-20 |
-| 3. Response & Decision Engine | 0/? | Not started | -- |
+| 3. Response & Decision Engine | 0/2 | In progress | -- |
 | 4. Hook Integration & Installation | 0/? | Not started | -- |
 | 5. Code Content Security | 0/? | Not started | -- |
 | 6. Windows Native & Advanced Configuration | 0/? | Not started | -- |
