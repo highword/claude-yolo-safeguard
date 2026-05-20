@@ -331,4 +331,15 @@ describe("analyzeCommand - Integration Tests", () => {
 			expect(match).toBeDefined();
 		});
 	});
+
+	describe("Safety guards", () => {
+		it("interpreter extraction bails on extremely long code strings (>10000 chars)", () => {
+			// Construct a python -c with a very long code string
+			const longCode = `python -c "${"x".repeat(15000)}"`;
+			// Should not hang or crash; should return quickly with no matches
+			const result = analyzeCommand(longCode);
+			expect(result).toBeDefined();
+			expect(result.matches).toEqual([]);
+		});
+	});
 });

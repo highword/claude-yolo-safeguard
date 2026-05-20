@@ -41,3 +41,16 @@ export interface AnalysisResult {
 	segmentCount: number;
 	maxDepth: number;
 }
+
+/** Type guard: checks if a ParseEntry is an operator token (not glob, not comment) */
+export function isOperatorToken(
+	token: ParseEntry,
+): token is { op: string } {
+	return (
+		typeof token === "object" &&
+		token !== null &&
+		"op" in token &&
+		!("pattern" in token) &&
+		!("comment" in token)
+	);
+}

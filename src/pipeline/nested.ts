@@ -1,4 +1,5 @@
 import type { ParseEntry } from "./types";
+import { isOperatorToken } from "./types";
 
 /**
  * Represents a nested command extracted from a shell wrapper, interpreter, or subshell.
@@ -35,30 +36,19 @@ export const INTERPRETERS: Record<string, string[]> = {
 	perl: ["-e"],
 };
 
-/** Maximum recursion depth (caller-enforced, but module respects it) */
-const MAX_DEPTH = 10;
-
 /**
  * Extract nested commands from a token array.
  * Detects shell wrappers (bash -c), env wrappers (/usr/bin/env bash -c),
  * and interpreter one-liners (python -c, node -e, ruby -e, perl -e).
  *
- * Per D-28: This module extracts one level; caller handles recursion stack.
- * Per D-25: depth >= MAX_DEPTH (10) bails with empty (fail-open).
+ * Per D-28: This module extracts one level; caller handles recursion stack and depth limit.
  *
  * @param tokens - ParseEntry array from shell-quote parse
- * @param currentDepth - Current recursion depth (default 0)
  * @returns Array of nested commands found
  */
 export function extractNestedCommands(
 	tokens: ParseEntry[],
-	currentDepth = 0,
 ): NestedCommand[] {
-	// Depth limit: bail with empty (fail-open per D-25)
-	if (currentDepth >= MAX_DEPTH) {
-		return [];
-	}
-
 	// Filter to string tokens only for pattern detection
 	const stringTokens: string[] = [];
 	for (const t of tokens) {
@@ -136,13 +126,7 @@ export function extractSubshells(tokens: ParseEntry[]): NestedCommand[] {
 		// Look for "$" (or string ending with "$") followed by {op: "("}
 		if (typeof token === "string" && (token === "$" || token.endsWith("$"))) {
 			const next = tokens[i + 1];
-			if (
-				next &&
-				typeof next === "object" &&
-				"op" in next &&
-				!("pattern" in next) &&
-				(next as { op: string }).op === "("
-			) {
+			if (next && isOperatorToken(next) && next.op === "(") {
 				// Found $( — collect tokens until matching )
 				const innerTokens: ParseEntry[] = [];
 				let depth = 1;
@@ -150,17 +134,11 @@ export function extractSubshells(tokens: ParseEntry[]): NestedCommand[] {
 
 				while (j < tokens.length && depth > 0) {
 					const t = tokens[j];
-					if (
-						typeof t === "object" &&
-						t !== null &&
-						"op" in t &&
-						!("pattern" in t)
-					) {
-						const op = (t as { op: string }).op;
-						if (op === "(") {
+					if (isOperatorToken(t)) {
+						if (t.op === "(") {
 							depth++;
 							if (depth > 1) innerTokens.push(t);
-						} else if (op === ")") {
+						} else if (t.op === ")") {
 							depth--;
 							if (depth > 0) innerTokens.push(t);
 						} else {

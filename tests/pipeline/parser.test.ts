@@ -6,6 +6,7 @@ import {
 	buildTokenSpans,
 } from "../../src/pipeline/parser";
 import type { ParseEntry } from "../../src/pipeline/types";
+import { isOperatorToken } from "../../src/pipeline/types";
 
 describe("parseCommand", () => {
 	test("simple command returns string tokens", () => {
@@ -208,5 +209,25 @@ describe("buildTokenSpans", () => {
 	test("empty tokens returns empty spans", () => {
 		const spans = buildTokenSpans([]);
 		expect(spans).toEqual([]);
+	});
+});
+
+describe("isOperatorToken", () => {
+	test("identifies operator tokens", () => {
+		expect(isOperatorToken({ op: "&&" })).toBe(true);
+		expect(isOperatorToken({ op: "|" })).toBe(true);
+		expect(isOperatorToken({ op: ">" })).toBe(true);
+	});
+
+	test("rejects glob tokens", () => {
+		expect(isOperatorToken({ op: "glob", pattern: "*.ts" })).toBe(false);
+	});
+
+	test("rejects string tokens", () => {
+		expect(isOperatorToken("hello")).toBe(false);
+	});
+
+	test("rejects null and non-object values", () => {
+		expect(isOperatorToken(null as unknown as ParseEntry)).toBe(false);
 	});
 });

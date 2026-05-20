@@ -91,12 +91,10 @@ export function analyzeCommand(
 	customRules?: Rule[],
 ): AnalysisResult {
 	// Step 1: Quick Reject - if no keywords found, guaranteed no match
-	// Only apply quick reject when no custom rules (custom rules may have keywords not in QUICK_REJECT_SET)
-	if (!customRules && quickReject(command)) {
-		return { matches: [], segmentCount: 0, maxDepth: 0 };
-	}
-	if (customRules && quickReject(command)) {
-		// Check if any custom rule keyword matches
+	if (quickReject(command)) {
+		if (!customRules) {
+			return { matches: [], segmentCount: 0, maxDepth: 0 };
+		}
 		const lower = command.toLowerCase();
 		const hasCustomKeyword = customRules.some((rule) =>
 			rule.keywords.some((kw) => lower.includes(kw.toLowerCase())),
@@ -211,6 +209,10 @@ export function analyzeCommand(
  * child_process.exec('...'), etc.
  */
 function extractShellFromInterpreter(code: string): string[] {
+	if (code.length > 10000) {
+		return [];
+	}
+
 	const results: string[] = [];
 
 	// Match patterns like: os.system('cmd'), system('cmd'), exec('cmd'),

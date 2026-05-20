@@ -188,15 +188,10 @@ describe("extractSubshells", () => {
 });
 
 describe("depth limiting", () => {
-	test("extractNestedCommands with maxDepth 0 returns empty (bail)", () => {
+	test("depth is enforced by caller (analyzeCommand), not by extractNestedCommands", () => {
+		// extractNestedCommands always extracts one level — depth control is in index.ts
 		const tokens: ParseEntry[] = ["bash", "-c", "rm -rf /"];
-		const result = extractNestedCommands(tokens, 10);
-		expect(result).toEqual([]);
-	});
-
-	test("extractNestedCommands within depth limit works normally", () => {
-		const tokens: ParseEntry[] = ["bash", "-c", "rm -rf /"];
-		const result = extractNestedCommands(tokens, 5);
+		const result = extractNestedCommands(tokens);
 		expect(result).toEqual([
 			{ command: "rm -rf /", source: "shell-wrapper" },
 		]);

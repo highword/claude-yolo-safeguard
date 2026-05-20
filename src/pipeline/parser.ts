@@ -1,5 +1,6 @@
 import { parse } from "shell-quote";
 import type { ParseEntry, Segment, TokenSpan } from "./types";
+import { isOperatorToken } from "./types";
 
 /**
  * Parse a raw POSIX shell command string into typed token array.
@@ -63,13 +64,7 @@ export function splitSegments(tokens: ParseEntry[]): Segment[] {
  * Check if a token is a segment-splitting operator.
  */
 function isSegmentSplitOperator(token: ParseEntry): boolean {
-	return (
-		typeof token === "object" &&
-		token !== null &&
-		"op" in token &&
-		!("pattern" in token) &&
-		SEGMENT_SPLIT_OPS.has((token as { op: string }).op)
-	);
+	return isOperatorToken(token) && SEGMENT_SPLIT_OPS.has(token.op);
 }
 
 /**
