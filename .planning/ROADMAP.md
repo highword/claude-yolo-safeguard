@@ -24,9 +24,9 @@
 **Plans:** 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffold, build tooling, and all shared type interfaces
-- [ ] 01-02-PLAN.md — Configuration system with 3-layer merge and escalation enforcement
-- [ ] 01-03-PLAN.md — Built-in rule definitions and Quick Reject Set
+- [x] 01-01-PLAN.md — Project scaffold, build tooling, and all shared type interfaces
+- [x] 01-02-PLAN.md — Configuration system with 3-layer merge and escalation enforcement
+- [x] 01-03-PLAN.md — Built-in rule definitions and Quick Reject Set
 
 #### Success Criteria
 
@@ -43,7 +43,12 @@ Plans:
 **Goal:** Users' dangerous shell commands (rm -rf, DROP DATABASE, git force-push) are detected and classified before execution.
 **Depends on:** Phase 1
 **Requirements:** SHELL-01, SHELL-02, SHELL-03, SHELL-04, SHELL-05, SHELL-06, SHELL-07, SHELL-08, SHELL-09, PLAT-01, PLAT-02
-**Plans:** TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Pipeline types and POSIX shell parser with segment splitting (TDD)
+- [ ] 02-02-PLAN.md — Nested command extraction and regex matching engine (TDD)
+- [ ] 02-03-PLAN.md — Pipeline orchestrator with recursive analysis and platform detection (TDD)
 
 #### Success Criteria
 
@@ -127,7 +132,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
-| 2. Shell Command Analysis | 0/? | Not started | -- |
+| 2. Shell Command Analysis | 0/3 | Planned | -- |
 | 3. Response & Decision Engine | 0/? | Not started | -- |
 | 4. Hook Integration & Installation | 0/? | Not started | -- |
 | 5. Code Content Security | 0/? | Not started | -- |
