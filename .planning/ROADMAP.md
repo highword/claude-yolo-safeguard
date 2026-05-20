@@ -8,7 +8,7 @@
 ## Phases
 
 - [x] **Phase 1: Foundation & Core Types** - Project scaffold, shared types, config system, built-in rule definitions (completed 2026-05-20)
-- [ ] **Phase 2: Shell Command Analysis** - POSIX parser, command segmentation, rule matching, false-positive reduction
+- [x] **Phase 2: Shell Command Analysis** - POSIX parser, command segmentation, rule matching, false-positive reduction (completed 2026-05-20)
 - [ ] **Phase 3: Response & Decision Engine** - Severity classification, graduated actions, audit logging, message formatting
 - [ ] **Phase 4: Hook Integration & Installation** - Claude Code adapter, entry point, CLI installer, zero-config setup
 - [ ] **Phase 5: Code Content Security** - Content analyzer, Write/Edit hook routing, secret/XSS/SQLi/eval/crypto detection
@@ -46,9 +46,9 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Pipeline types and POSIX shell parser with segment splitting (TDD)
-- [ ] 02-02-PLAN.md — Nested command extraction and regex matching engine (TDD)
-- [ ] 02-03-PLAN.md — Pipeline orchestrator with recursive analysis and platform detection (TDD)
+- [x] 02-01-PLAN.md — Pipeline types and POSIX shell parser with segment splitting (TDD)
+- [x] 02-02-PLAN.md — Nested command extraction and regex matching engine (TDD)
+- [x] 02-03-PLAN.md — Pipeline orchestrator with recursive analysis and platform detection (TDD)
 
 #### Success Criteria
 
@@ -132,7 +132,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
-| 2. Shell Command Analysis | 0/3 | Planned | -- |
+| 2. Shell Command Analysis | 3/3 | Complete | 2026-05-20 |
 | 3. Response & Decision Engine | 0/? | Not started | -- |
 | 4. Hook Integration & Installation | 0/? | Not started | -- |
 | 5. Code Content Security | 0/? | Not started | -- |
