@@ -1,0 +1,30 @@
+{
+  "name": "claude-yolo-safeguard",
+  "version": "0.0.1",
+  "description": "Universal AI agent safety guardrail for YOLO mode",
+  "main": "dist/hook.cjs",
+  "bin": {
+    "claude-yolo-safeguard": "./dist/cli.cjs"
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "test": "bun test",
+    "lint": "bunx biome check .",
+    "lint:fix": "bunx biome check --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": ["dist/"],
+  "license": "MIT",
+  "dependencies": {
+    "shell-quote": "^1.8.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@types/shell-quote": "^1.7.5",
+    "bun-types": "latest",
+    "typescript": "^5.5.0"
+  }
+}
