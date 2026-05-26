@@ -29,7 +29,21 @@
       "mcp__github-com__create_repository",
       "Bash(git remote *)",
       "Bash(git push *)",
-      "Bash(git branch *)"
+      "Bash(git branch *)",
+      "Bash(git -C \".claude/worktrees/agent-a44ceecf9e3dc5d8c\" log --oneline aad5dbb..HEAD)",
+      "Bash(git -C \".claude/worktrees/agent-a44ceecf9e3dc5d8c\" show --stat HEAD)",
+      "Bash(git *)",
+      "Bash(bun install *)",
+      "Bash(bun run *)",
+      "Bash(bun test *)",
+      "Bash(git diff *)",
+      "Bash(bunx biome *)",
+      "Bash(rm -rf /)",
+      "Bash(bun -e \"const { parse } = require\\('shell-quote'\\); const result = parse\\('echo $\\(rm -rf /\\)'\\); console.log\\(JSON.stringify\\(result, null, 2\\)\\);\")",
+      "Bash(bun -e ' *)",
+      "Bash(bun -e \"const { analyzeCommand } = require\\('./src/pipeline/index.ts'\\); const r = analyzeCommand\\('rm -rf /'\\); console.log\\('SC1a rm -rf /:', r.matches.length > 0 ? 'DETECTED' : 'MISSED', '- severity:', r.matches[0]?.rule.severity\\);\")",
+      "Bash(bun -e \"const { analyzeCommand } = require\\('./src/pipeline/index.ts'\\); const r = analyzeCommand\\('python -c \\\\\"import os; os.system\\(\\\\\\\\\\\\\"rm -rf /\\\\\\\\\\\\\"\\)\\\\\"'\\); console.log\\('SC4 python -c:', r.matches.length > 0 ? 'DETECTED' : 'MISSED'\\);\")",
+      "Skill(gsd-verify-work)"
     ]
   }
 }
