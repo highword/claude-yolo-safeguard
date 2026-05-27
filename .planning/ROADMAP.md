@@ -9,7 +9,7 @@
 
 - [x] **Phase 1: Foundation & Core Types** - Project scaffold, shared types, config system, built-in rule definitions (completed 2026-05-20)
 - [x] **Phase 2: Shell Command Analysis** - POSIX parser, command segmentation, rule matching, false-positive reduction (completed 2026-05-20)
-- [ ] **Phase 3: Response & Decision Engine** - Severity classification, graduated actions, audit logging, message formatting
+- [x] **Phase 3: Response & Decision Engine** - Severity classification, graduated actions, audit logging, message formatting (completed 2026-05-27)
 - [ ] **Phase 4: Hook Integration & Installation** - Claude Code adapter, entry point, CLI installer, zero-config setup
 - [ ] **Phase 5: Code Content Security** - Content analyzer, Write/Edit hook routing, secret/XSS/SQLi/eval/crypto detection
 - [ ] **Phase 6: Windows Native & Advanced Configuration** - PowerShell parser, path normalization, custom rules, allow-list
@@ -68,8 +68,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Allow-list matching and decision engine core (TDD)
-- [ ] 03-02-PLAN.md — Message formatting, hook output, and audit logger (TDD)
+- [x] 03-01-PLAN.md — Allow-list matching and decision engine core (TDD)
+- [x] 03-02-PLAN.md — Message formatting, hook output, and audit logger (TDD)
 
 #### Success Criteria
 
@@ -137,7 +137,7 @@ Plans:
 |-------|---------------|--------|-----------|
 | 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
 | 2. Shell Command Analysis | 3/3 | Complete | 2026-05-20 |
-| 3. Response & Decision Engine | 0/2 | In progress | -- |
+| 3. Response & Decision Engine | 2/2 | Complete | 2026-05-27 |
 | 4. Hook Integration & Installation | 0/? | Not started | -- |
 | 5. Code Content Security | 0/? | Not started | -- |
 | 6. Windows Native & Advanced Configuration | 0/? | Not started | -- |
