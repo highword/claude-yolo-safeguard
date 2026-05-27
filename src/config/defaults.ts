@@ -8,7 +8,7 @@ export function getDefaults(): Config {
 		allowList: [],
 		logging: {
 			enabled: true,
-			path: "~/.local/share/yolo-safeguard/audit.jsonl",
+			path: "~/.config/yolo-safeguard/audit.jsonl",
 			maxSizeMb: 10,
 		},
 	};
