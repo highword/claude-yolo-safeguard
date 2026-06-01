@@ -143,7 +143,7 @@ Plans:
 | 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
 | 2. Shell Command Analysis | 3/3 | Complete | 2026-05-20 |
 | 3. Response & Decision Engine | 2/2 | Complete | 2026-05-27 |
-| 4. Hook Integration & Installation | 0/3 | In progress | -- |
+| 4. Hook Integration & Installation | 0/3 | Planned | -- |
 | 5. Code Content Security | 0/? | Not started | -- |
 | 6. Windows Native & Advanced Configuration | 0/? | Not started | -- |
 
