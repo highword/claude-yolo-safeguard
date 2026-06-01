@@ -10,7 +10,7 @@
 - [x] **Phase 1: Foundation & Core Types** - Project scaffold, shared types, config system, built-in rule definitions (completed 2026-05-20)
 - [x] **Phase 2: Shell Command Analysis** - POSIX parser, command segmentation, rule matching, false-positive reduction (completed 2026-05-20)
 - [x] **Phase 3: Response & Decision Engine** - Severity classification, graduated actions, audit logging, message formatting (completed 2026-05-27)
-- [ ] **Phase 4: Hook Integration & Installation** - Claude Code adapter, entry point, CLI installer, zero-config setup
+- [x] **Phase 4: Hook Integration & Installation** - Claude Code adapter, entry point, CLI installer, zero-config setup (completed 2026-06-01)
 - [ ] **Phase 5: Code Content Security** - Content analyzer, Write/Edit hook routing, secret/XSS/SQLi/eval/crypto detection
 - [ ] **Phase 6: Windows Native & Advanced Configuration** - PowerShell parser, path normalization, custom rules, allow-list
 
