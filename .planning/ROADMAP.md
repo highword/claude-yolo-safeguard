@@ -107,7 +107,12 @@ Plans:
 **Goal:** Dangerous code patterns (hardcoded secrets, XSS, SQL injection, eval, insecure crypto) written via Write/Edit tools are detected and blocked.
 **Depends on:** Phase 3, Phase 4
 **Requirements:** CODE-01, CODE-02, CODE-03, CODE-04, CODE-05, CODE-06
-**Plans:** TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Content rules expansion (15+ rules, 6 categories) and Shannon entropy module (TDD)
+- [ ] 05-02-PLAN.md — Content scanner with quick-reject, ignore markers, path-based severity adjustment (TDD)
+- [ ] 05-03-PLAN.md — Hook routing for Write/Edit tools and integration tests
 
 #### Success Criteria
 
@@ -144,7 +149,7 @@ Plans:
 | 2. Shell Command Analysis | 3/3 | Complete | 2026-05-20 |
 | 3. Response & Decision Engine | 2/2 | Complete | 2026-05-27 |
 | 4. Hook Integration & Installation | 3/3 | Complete | 2026-06-01 |
-| 5. Code Content Security | 0/? | Not started | -- |
+| 5. Code Content Security | 0/3 | Not started | -- |
 | 6. Windows Native & Advanced Configuration | 0/? | Not started | -- |
 
 ## Release Mapping
