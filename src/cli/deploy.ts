@@ -28,7 +28,7 @@ export function getHookTargetPath(
  *
  * @param baseDir - The directory to search from (defaults to __dirname)
  */
-export function resolveHookSource(baseDir: string = __dirname): string {
+export function resolveHookSource(baseDir: string = path.dirname(process.argv[1] || __dirname)): string {
 	const primaryPath = path.join(baseDir, "hook.cjs");
 	if (fs.existsSync(primaryPath)) {
 		return primaryPath;
