@@ -35,3 +35,12 @@ export interface HookOutput {
 	suggestion?: string;
 	matchedPatterns?: string[];
 }
+
+export interface StructuredHookOutput {
+	hookSpecificOutput: {
+		hookEventName: "PreToolUse";
+		permissionDecision: "allow" | "deny";
+		additionalContext?: string;
+	};
+	systemMessage?: string;
+}
