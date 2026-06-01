@@ -628,7 +628,7 @@ export function processHookEvent(raw: string): { output: string; exitCode: numbe
 | A3 | `child_process.exec` regex won't false-positive on variable names like `execFile` or `execute` | Code Examples | Pattern `exec\s*\(` could match `execute()` in unrelated contexts; may need word boundary or prefix |
 | A4 | 500KB content size limit is appropriate for fail-open threshold | Architecture Patterns | If Claude Code writes very large generated files, they won't be scanned; acceptable per fail-open philosophy |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Entropy threshold tuning**
    - What we know: Gitleaks uses 3.5 as base; CONTEXT.md specifies 4.5; typical hex tokens score ~3.7-4.0
