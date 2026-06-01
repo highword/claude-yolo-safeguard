@@ -28,7 +28,7 @@ const mockMatch = (
 });
 
 describe("formatHookOutput", () => {
-	test("block decision → exitCode 2, JSON with decision='block'", () => {
+	test("block decision produces exitCode 2 and JSON with hookSpecificOutput.permissionDecision='deny'", () => {
 		const decision: Decision = {
 			action: "block",
 			severity: "CRITICAL",
@@ -40,35 +40,24 @@ describe("formatHookOutput", () => {
 		const result = formatHookOutput(decision);
 		expect(result.exitCode).toBe(2);
 		const parsed = JSON.parse(result.output);
-		expect(parsed.decision).toBe("block");
-		expect(parsed.reason).toBe(decision.message);
+		expect(parsed.hookSpecificOutput.permissionDecision).toBe("deny");
 	});
 
-	test("block decision includes rule, severity, category, suggestion, matchedPatterns", () => {
+	test("block decision includes systemMessage containing the decision.message text", () => {
 		const decision: Decision = {
 			action: "block",
-			severity: "HIGH",
-			matchedRules: [
-				mockMatch("shell.git-force-push", "git push --force", "HIGH"),
-				mockMatch("shell.git-reset-hard", "git reset --hard", "HIGH"),
-			],
-			message: "Blocked: git push --force — Rule shell.git-force-push.",
+			severity: "CRITICAL",
+			matchedRules: [mockMatch("shell.rm-recursive-root", "rm -rf /", "CRITICAL")],
+			message: "Blocked: rm -rf / — Rule shell.rm-recursive-root.",
 			suggestion: "Use safer alternative",
 			timestamp: "2024-01-15T10:30:00.000Z",
 		};
 		const result = formatHookOutput(decision);
 		const parsed = JSON.parse(result.output);
-		expect(parsed.rule).toBe("shell.git-force-push");
-		expect(parsed.severity).toBe("HIGH");
-		expect(parsed.category).toBe("shell");
-		expect(parsed.suggestion).toBe("Use safer alternative");
-		expect(parsed.matchedPatterns).toEqual([
-			"shell.git-force-push",
-			"shell.git-reset-hard",
-		]);
+		expect(parsed.systemMessage).toContain("Blocked: rm -rf /");
 	});
 
-	test("warn decision → exitCode 0, JSON with decision='allow'", () => {
+	test("warn decision produces exitCode 0 and JSON with hookSpecificOutput.permissionDecision='allow' and additionalContext", () => {
 		const decision: Decision = {
 			action: "warn",
 			severity: "MEDIUM",
@@ -80,11 +69,11 @@ describe("formatHookOutput", () => {
 		const result = formatHookOutput(decision);
 		expect(result.exitCode).toBe(0);
 		const parsed = JSON.parse(result.output);
-		expect(parsed.decision).toBe("allow");
-		expect(parsed.reason).toBe(decision.message);
+		expect(parsed.hookSpecificOutput.permissionDecision).toBe("allow");
+		expect(parsed.hookSpecificOutput.additionalContext).toContain("Warning: chmod 777 file");
 	});
 
-	test("log decision → exitCode 0, empty output", () => {
+	test("log decision produces exitCode 0 and empty output string", () => {
 		const decision: Decision = {
 			action: "log",
 			severity: "LOW",
@@ -96,7 +85,7 @@ describe("formatHookOutput", () => {
 		expect(result.output).toBe("");
 	});
 
-	test("off decision → exitCode 0, empty output", () => {
+	test("off decision produces exitCode 0 and empty output string", () => {
 		const decision: Decision = {
 			action: "off",
 			severity: "INFO",
@@ -108,47 +97,46 @@ describe("formatHookOutput", () => {
 		expect(result.output).toBe("");
 	});
 
-	test("block with multiple matched rules → matchedPatterns contains all rule IDs", () => {
+	test("allow path (zero matchedRules) produces exitCode 0 and empty output", () => {
+		const decision: Decision = {
+			action: "off",
+			matchedRules: [],
+			timestamp: "2024-01-15T10:30:00.000Z",
+		};
+		const result = formatHookOutput(decision);
+		expect(result.exitCode).toBe(0);
+		expect(result.output).toBe("");
+	});
+
+	test("hookSpecificOutput.hookEventName is always 'PreToolUse' for block", () => {
 		const decision: Decision = {
 			action: "block",
-			severity: "CRITICAL",
-			matchedRules: [
-				mockMatch("shell.rm-recursive-root", "rm -rf /", "CRITICAL"),
-				mockMatch("shell.rm-recursive-home", "rm -rf ~", "CRITICAL"),
-				mockMatch("shell.destructive-flag", "--force", "HIGH"),
-			],
-			message: "Blocked: rm -rf / — Rule shell.rm-recursive-root.",
+			severity: "HIGH",
+			matchedRules: [mockMatch("shell.git-force-push", "git push --force", "HIGH")],
+			message: "Blocked: git push --force — Rule shell.git-force-push.",
 			suggestion: "Use safer alternative",
 			timestamp: "2024-01-15T10:30:00.000Z",
 		};
 		const result = formatHookOutput(decision);
 		const parsed = JSON.parse(result.output);
-		expect(parsed.matchedPatterns).toEqual([
-			"shell.rm-recursive-root",
-			"shell.rm-recursive-home",
-			"shell.destructive-flag",
-		]);
+		expect(parsed.hookSpecificOutput.hookEventName).toBe("PreToolUse");
 	});
 
-	test("block with no suggestion → suggestion field omitted from JSON", () => {
-		const ruleNoSuggestion = {
-			...mockRule("shell.test", "CRITICAL"),
-			suggestion: undefined,
-		};
+	test("hookSpecificOutput.hookEventName is always 'PreToolUse' for warn", () => {
 		const decision: Decision = {
-			action: "block",
-			severity: "CRITICAL",
-			matchedRules: [{ rule: ruleNoSuggestion, matchedText: "test cmd", index: 0 }],
-			message: "Blocked: test cmd — Rule shell.test.",
+			action: "warn",
+			severity: "MEDIUM",
+			matchedRules: [mockMatch("shell.chmod-777", "chmod 777 file", "MEDIUM")],
+			message: "Warning: chmod 777 file — Rule shell.chmod-777.",
+			suggestion: "Use safer alternative",
 			timestamp: "2024-01-15T10:30:00.000Z",
 		};
 		const result = formatHookOutput(decision);
 		const parsed = JSON.parse(result.output);
-		expect(parsed.suggestion).toBeUndefined();
-		expect("suggestion" in parsed).toBe(false);
+		expect(parsed.hookSpecificOutput.hookEventName).toBe("PreToolUse");
 	});
 
-	test("output JSON is valid parseable JSON", () => {
+	test("output JSON is compact (no indentation/newlines)", () => {
 		const decision: Decision = {
 			action: "block",
 			severity: "HIGH",
@@ -158,17 +146,7 @@ describe("formatHookOutput", () => {
 			timestamp: "2024-01-15T10:30:00.000Z",
 		};
 		const result = formatHookOutput(decision);
-		expect(() => JSON.parse(result.output)).not.toThrow();
-	});
-
-	test("allow path (zero matchedRules) → exitCode 0, empty output", () => {
-		const decision: Decision = {
-			action: "off",
-			matchedRules: [],
-			timestamp: "2024-01-15T10:30:00.000Z",
-		};
-		const result = formatHookOutput(decision);
-		expect(result.exitCode).toBe(0);
-		expect(result.output).toBe("");
+		expect(result.output).not.toContain("\n");
+		expect(result.output).not.toContain("  ");
 	});
 });

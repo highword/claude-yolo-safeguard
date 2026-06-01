@@ -1,19 +1,9 @@
 import type { Decision } from "../types/decision";
-import type { HookOutput } from "../types/hook";
+import type { StructuredHookOutput } from "../types/hook";
 
 export interface FormattedOutput {
 	output: string;
 	exitCode: number;
-}
-
-function stripUndefined(obj: object): Record<string, unknown> {
-	const result: Record<string, unknown> = {};
-	for (const [key, value] of Object.entries(obj)) {
-		if (value !== undefined) {
-			result[key] = value;
-		}
-	}
-	return result;
 }
 
 export function formatHookOutput(decision: Decision): FormattedOutput {
@@ -25,32 +15,26 @@ export function formatHookOutput(decision: Decision): FormattedOutput {
 		return { output: "", exitCode: 0 };
 	}
 
-	const primary = decision.matchedRules[0];
-
 	if (decision.action === "block") {
-		const hookOutput: HookOutput = {
-			decision: "block",
-			reason: decision.message,
-			rule: primary?.rule.id,
-			severity: decision.severity,
-			category: primary?.rule.category,
-			suggestion: decision.suggestion || undefined,
-			matchedPatterns: decision.matchedRules.map((m) => m.rule.id),
+		const output: StructuredHookOutput = {
+			hookSpecificOutput: {
+				hookEventName: "PreToolUse",
+				permissionDecision: "deny",
+			},
+			systemMessage: decision.message || "Command blocked by yolo-safeguard",
 		};
-		return { output: JSON.stringify(stripUndefined(hookOutput)), exitCode: 2 };
+		return { output: JSON.stringify(output), exitCode: 2 };
 	}
 
 	if (decision.action === "warn") {
-		const hookOutput: HookOutput = {
-			decision: "allow",
-			reason: decision.message,
-			rule: primary?.rule.id,
-			severity: decision.severity,
-			category: primary?.rule.category,
-			suggestion: decision.suggestion || undefined,
-			matchedPatterns: decision.matchedRules.map((m) => m.rule.id),
+		const output: StructuredHookOutput = {
+			hookSpecificOutput: {
+				hookEventName: "PreToolUse",
+				permissionDecision: "allow",
+				additionalContext: decision.message || "Warning from yolo-safeguard",
+			},
 		};
-		return { output: JSON.stringify(stripUndefined(hookOutput)), exitCode: 0 };
+		return { output: JSON.stringify(output), exitCode: 0 };
 	}
 
 	return { output: "", exitCode: 0 };
