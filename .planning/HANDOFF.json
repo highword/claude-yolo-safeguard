@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-06-01T18:00:00+08:00",
+  "phase": "5",
+  "phase_name": "Code Content Security",
+  "phase_dir": ".planning/phases/05-code-content-security",
+  "plan": 0,
+  "task": 0,
+  "total_tasks": 7,
+  "status": "paused",
+  "completed_tasks": [],
+  "remaining_tasks": [
+    {"id": 1, "name": "Shannon entropy module + content rules (15+ patterns)", "status": "not_started"},
+    {"id": 2, "name": "Content scanner with quick-reject, ignore markers, path adjustment", "status": "not_started"},
+    {"id": 3, "name": "Hook routing for Write/Edit + integration tests + regression", "status": "not_started"}
+  ],
+  "blockers": [],
+  "human_actions_pending": [],
+  "decisions": [
+    {"decision": "3 plans in 3 waves (linear dependency chain)", "rationale": "Wave 1 builds data layer (rules+entropy), Wave 2 builds scanner consuming Wave 1, Wave 3 wires into hook", "phase": "5"},
+    {"decision": "Zero new dependencies", "rationale": "Shannon entropy is 10 lines of math; <=3 dep constraint honored", "phase": "5"},
+    {"decision": "Existing src/rules/content.ts becomes re-export shim", "rationale": "Backward compat for any imports; real rules move to src/content/rules.ts", "phase": "5"}
+  ],
+  "uncommitted_files": [],
+  "next_action": "/gsd-execute-phase 5",
+  "context_notes": "Phase 5 fully planned. Research covered architecture, entropy detection, pattern mapping. All 6 CODE requirements mapped. Plan checker passed after resolving RESEARCH.md open questions marker and VALIDATION.md file name alignment. Ready for execution."
+}
