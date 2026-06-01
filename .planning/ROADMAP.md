@@ -89,8 +89,8 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Hook entry point, structured output format, and dual-entrypoint build
-- [ ] 04-02-PLAN.md — CLI installer with settings.json manipulation and hook deployment
+- [x] 04-01-PLAN.md — Hook entry point, structured output format, and dual-entrypoint build
+- [x] 04-02-PLAN.md — CLI installer with settings.json manipulation and hook deployment
 - [ ] 04-03-PLAN.md — Performance benchmarks and build verification tests
 
 #### Success Criteria
@@ -143,7 +143,7 @@ Plans:
 | 1. Foundation & Core Types | 3/3 | Complete | 2026-05-20 |
 | 2. Shell Command Analysis | 3/3 | Complete | 2026-05-20 |
 | 3. Response & Decision Engine | 2/2 | Complete | 2026-05-27 |
-| 4. Hook Integration & Installation | 0/3 | Planned | -- |
+| 4. Hook Integration & Installation | 2/3 | In progress | -- |
 | 5. Code Content Security | 0/? | Not started | -- |
 | 6. Windows Native & Advanced Configuration | 0/? | Not started | -- |
 
